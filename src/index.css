@@ -19,10 +19,10 @@ body {
   letter-spacing: 0.1em;
   word-spacing: 0.1em;
   background: linear-gradient(
-    180deg,
+    145deg,
+    var(--tertiary),
     var(--primary),
-    var(--primary),
-    var(--tertiary)
+    var(--primary)
   );
   overflow-x: hidden;
   font-family: "Space Mono", monospace;
