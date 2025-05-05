@@ -6,11 +6,28 @@ import Landing from './pages/landing';
 
 export default function App() {
   return (
-    <div className="flex flex-col item-center justify-center w-full h-[100vh]">
+    <div className="flex flex-col items-center justify-center w-full h-[100vh]">
       <Header />
       
       <Routes>
         <Route path="/" element={<Landing />} />
+
+        {/* 
+        <Route path="/auth">
+          <Route path="sign-up" element={<SignUp />} />
+          <Route path="login" element={<Login />} />
+        </Route>
+
+        <Route path="/game">
+          <Route path="/menu" element={<GameMenu />} />
+          <Route path="/play" element={<GameScreen />} />
+        </Route>
+
+        <ProtectedRoute>
+          <Route path="/profile" element={<ProfileScreen />} />
+          <Route path="/settings" element={<SettingsScreen />} />
+        </ProtectedRoute>
+        */}
       </Routes>
     </div>
   );
