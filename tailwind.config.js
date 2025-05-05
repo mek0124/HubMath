@@ -10,7 +10,7 @@ module.exports = {
         secondary: 'rgb(0,38,80)',
         tertiary: 'rgb(33,84,141)',
         accent: 'rgb(94,147,207)',
-        fg: 'rgb(177,203,231)',
+        fontColor: 'rgb(177,203,231)',
       },
     },
     fontFamily: {
