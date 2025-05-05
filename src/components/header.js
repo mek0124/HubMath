@@ -1,4 +1,5 @@
 import AppIcon from '../assets/images/app-icon.png';
+import { Link } from 'react-router-dom';
 
 
 export default function Header() {
@@ -23,6 +24,7 @@ export default function Header() {
           We Just Do Math :P
         </h3>
       </div>
+<Link to="/auth/signup">Sign Up</Link>
     </div>
   );
 };
