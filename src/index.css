@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: rgb(0,22,45);
+  --secondary: rgb(0,38,80);
+  --tertiary: rgb(33,84,141);
+  --accent: rgb(94,147,207);
+  --fg: rgb(177,203,231);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 0.1em;
+  word-spacing: 0.1em;
+  background: linear-gradient(
+    180deg,
+    var(--primary),
+    var(--primary),
+    var(--tertiary)
+  );
+  overflow-x: hidden;
+  font-family: "Space Mono", monospace;
+}
