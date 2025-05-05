@@ -15,11 +15,11 @@ export default function Header() {
       </div>
 
       <div className="flex flex-col items-start justify-center w-full">
-        <h1 className="font-bold text-3xl text-fg">
+        <h1 className="font-bold text-3xl text-fontColor">
           Hub Math
         </h1>
 
-        <h3 className="text-xs text-fg">
+        <h3 className="text-xs text-fontColor">
           We Just Do Math :P
         </h3>
       </div>
