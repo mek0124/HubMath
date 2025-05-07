@@ -119,14 +119,14 @@ export default function SignUp() {
             <button 
               type="button"
               onClick={() => navigate("/")}
-              className="w-48 h-12 rounded-full bg-accent text-fontColor border-2 border-primary transform transition duration-300 ease-in-out hover:bg-secondary hover:shadow-lg hover:scale-105 text-xl font-bold text-center">
+              className="w-48 h-12 rounded-full bg-accent text-fontColor border-2 border-primary transform transition duration-300 ease-in-out hover:border-accent hover:bg-secondary hover:shadow-lg hover:scale-105 text-xl font-bold text-center">
               
               Cancel
             </button>
 
             <button
               type="submit"
-              className="w-48 h-12 rounded-full bg-accent text-fontColor border-2 border-primary transform transition duration-300 ease-in-out hover:bg-secondary hover:shadow-lg hover:scale-105 text-xl font-bold text-center">
+              className="w-48 h-12 rounded-full bg-accent text-fontColor border-2 border-primary transform transition duration-300 ease-in-out hover:border-accent hover:bg-secondary hover:shadow-lg hover:scale-105 text-xl font-bold text-center">
 
               Create
             </button>
@@ -136,7 +136,7 @@ export default function SignUp() {
             <button
               type="button"
               onClick={() => navigate("/")}
-              className="w-48 h-12 rounded-full bg-accent text-fontColor border-2 border-primary transform transition duration-300 ease-in-out hover:bg-secondary hover:shadow-lg hover:scale-105 text-xl font-bold text-center">
+              className="w-48 h-12 rounded-full bg-accent text-fontColor border-2 border-primary transform transition duration-300 ease-in-out hover:border-accent hover:bg-secondary hover:shadow-lg hover:scale-105 text-xl font-bold text-center">
 
               Forgot
             </button>
@@ -144,7 +144,7 @@ export default function SignUp() {
             <button
               type="button"
               onClick={() => navigate("/auth/sign-up")}
-              className="w-48 h-12 rounded-full bg-accent text-fontColor border-2 border-primary transform transition duration-300 ease-in-out hover:bg-secondary hover:shadow-lg hover:scale-105 text-xl font-bold text-center">
+              className="w-48 h-12 rounded-full bg-accent text-fontColor border-2 border-primary transform transition duration-300 ease-in-out hover:border-accent hover:bg-secondary hover:shadow-lg hover:scale-105 text-xl font-bold text-center">
 
               New Account
             </button>
