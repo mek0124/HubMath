@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Landing() {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-[100vh]">
+    <div className="flex flex-col items-center justify-center w-full min-h-screen">
       <div className="flex flex-col items-center justify-center w-[50%]">
         <h1 className="font-bold text-fontColor text-4xl text-center w-full">
           Welcome To Hub Math!
