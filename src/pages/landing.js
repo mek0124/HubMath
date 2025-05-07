@@ -15,14 +15,19 @@ export default function Landing() {
       </div>
 
       <div className="flex flex-row items-center justify-evenly w-[79%] h-52">
-        <Link to="/auth/login"
+        <Link to="/auth/sign-up"
           className="font-bold text-xl text-fontColor text-center border-2 border-tertiary w-80 p-1 rounded-xl transform transition duration-300 ease-in-out hover:bg-tertiary hover:shadow-lg hover:scale-105">
-            Login with Google
+            New Account
         </Link>
 
-        <Link to="/game-menu"
+        <Link to="/auth/login"
           className="font-bold text-xl text-fontColor text-center border-2 border-tertiary w-80 p-1 rounded-xl transform transition duration-300 ease-in-out hover:bg-tertiary hover:shadow-lg hover:scale-105">
-            Play As Guest
+            Login
+        </Link>
+
+        <Link to="/game/menu"
+          className="font-bold text-xl text-fontColor text-center border-2 border-tertiary w-80 p-1 rounded-xl transform transition duration-300 ease-in-out hover:bg-tertiary hover:shadow-lg hover:scale-105">
+            Let's Play!
         </Link>
       </div>
     </div>
