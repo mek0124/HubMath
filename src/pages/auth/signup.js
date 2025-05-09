@@ -78,7 +78,7 @@ export default function SignUp() {
   return (
     <div className="flex flex-col items-center justify-center w-full min-h-screen">
       <form 
-        className="flex flex-col items-center justify-evenly w-1/3 h-1/2 border-2 border-accent rounded-xl bg-tertiary p-2"
+        className="flex flex-col items-center justify-evenly w-1/3 h-[350px] border-2 border-accent rounded-xl bg-tertiary p-2"
         onSubmit={handleSubmit}>
         <div className="flex flex-col items-center justify-center w-full">
           <h1 className="font-bold text-fontColor text-3xl">
