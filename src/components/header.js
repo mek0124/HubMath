@@ -24,7 +24,6 @@ export default function Header() {
           We Just Do Math :P
         </h3>
       </div>
-<Link to="/auth/signup">Sign Up</Link>
     </div>
   );
 };
