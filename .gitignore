@@ -21,3 +21,16 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# local env files
+.env
+
+# Next.js cache
+.next
+
+# misc
+*.log
+*.swp
+/tmp
+Thumbs.db
+/build/*

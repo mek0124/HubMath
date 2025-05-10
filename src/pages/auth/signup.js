@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faLock, faUserPlus, faArrowLeft, faCheck, faExclamationTriangle, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import api from '../../hooks/api';
-
+import FormInput from "../../components/FormInput";
+import ActionButton from "../../components/ActionButton";
 
 export default function SignUp() {
   const [newUser, setNewUser] = useState({
@@ -15,6 +18,7 @@ export default function SignUp() {
 
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -33,13 +37,18 @@ export default function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     if (newUser.username.trim() === "" || newUser.password.trim() === "") {
       showErrorSuccess("All Entries Required!", false, true);
+      setIsLoading(false);
+      return;
     };
 
     if (newUser.password !== confirmPassword) {
       showErrorSuccess("Passwords Do Not Match", false, true);
+      setIsLoading(false);
+      return;
     }
 
     try {
@@ -53,6 +62,8 @@ export default function SignUp() {
     } catch (err) {
       console.error(err);
       showErrorSuccess(err.message, false, true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -76,83 +87,110 @@ export default function SignUp() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full min-h-screen">
-      <form 
-        className="flex flex-col items-center justify-evenly w-1/3 h-[350px] border-2 border-accent rounded-xl bg-tertiary p-2"
-        onSubmit={handleSubmit}>
-        <div className="flex flex-col items-center justify-center w-full">
-          <h1 className="font-bold text-fontColor text-3xl">
-            Create A New Account
-          </h1>
+    <div className="flex flex-col items-center justify-center w-full min-h-screen py-8">
+      <div className="w-full max-w-md bg-gradient-to-br from-primary via-secondary to-tertiary rounded-2xl shadow-2xl overflow-hidden">
+        <div className="bg-gradient-to-r from-primary to-secondary p-6 border-b border-accent">
+          <div className="flex justify-between items-center">
+            <h1 className="text-fontColor text-3xl font-bold">Create Account</h1>
+            <Link to="/" className="text-accent hover:text-fontColor transition-colors">
+              <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
+              Back
+            </Link>
+          </div>
+          <p className="text-fontColor opacity-80 mt-2">Join Hub Math and start your learning journey</p>
         </div>
 
-        <div className="flex flex-col items-center justify-evenly w-full flex-grow">
-          <div className="flex flex-row items-center justify-center w-full">
-            <input
-              placeholder="Create Username"
+        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+          <div className="mb-4">
+            <FormInput
+              icon={faUser}
               type="text"
               name="username"
+              placeholder="Create Username"
               value={newUser.username}
               onChange={handleChange}
-              className="text-xl text-fontColor bg-gray-500 border-2 border-secondary rounded-xl p-1 w-[50%] text-center transform transition duration-300 ease-in-out hover:bg-secondary hover:shadow-lg hover:scale-105 focus:bg-accent focus:text-black"
-              
+              required
             />
           </div>
 
-          <div className="flex flex-row items-center justify-center w-full">
-            <input
-              placeholder="Create Password"
+          <div className="mb-4">
+            <FormInput
+              icon={faLock}
               type="password"
               name="password"
+              placeholder="Create Password"
               value={newUser.password}
               onChange={handleChange}
-              className="text-xl text-fontColor bg-gray-500 border-2 border-secondary rounded-xl p-1 w-[50%] text-center transform transition duration-300 ease-in-out hover:bg-secondary hover:shadow-lg hover:scale-105 focus:bg-accent focus:text-black"
-              
+              required
             />
           </div>
 
-          <div className="flex flex-row items-center justify-center w-full">
-            <input
-              placeholder="Confirm Password"
-              type="confirmPassword"
+          <div className="mb-4">
+            <FormInput
+              icon={faLock}
+              type="password"
               name="confirmPassword"
-              value={newUser.confirmPassword}
+              placeholder="Confirm Password"
+              value={confirmPassword}
               onChange={handleChange}
-              className="text-xl text-fontColor bg-gray-500 border-2 border-secondary rounded-xl p-1 w-[50%] text-center transform transition duration-300 ease-in-out hover:bg-secondary hover:shadow-lg hover:scale-105 focus:bg-accent focus:text-black"
-              
+              required
             />
           </div>
-        </div>
 
-        {isError && (
-          <div className="flex flex-col items-center justify-center w-[50%] bg-red-400 text-black rounded-xl">
-            {resultText}
+          {/* Error and Success Messages */}
+          {isError && (
+            <div className="flex items-center p-3 mb-4 bg-red-500 bg-opacity-20 border border-red-500 rounded-lg text-red-100 animate-fadeIn">
+              <FontAwesomeIcon icon={faExclamationTriangle} className="mr-2 text-red-300" />
+              <span>{resultText}</span>
+            </div>
+          )}
+
+          {isSuccess && (
+            <div className="flex items-center p-3 mb-4 bg-green-500 bg-opacity-20 border border-green-500 rounded-lg text-green-100 animate-fadeIn">
+              <FontAwesomeIcon icon={faCheck} className="mr-2 text-green-300" />
+              <span>{resultText}</span>
+            </div>
+          )}
+
+          <div className="flex space-x-4 pt-4">
+            <ActionButton
+              text="Cancel"
+              icon={faTimes}
+              onClick={() => navigate("/")}
+              variant="outline"
+              size="lg"
+              className="flex-1"
+            />
+
+            <ActionButton
+              text="Create Account"
+              icon={faUserPlus}
+              type="submit"
+              isLoading={isLoading}
+              variant="primary"
+              size="lg"
+              className="flex-1"
+            />
           </div>
-        )}
 
-        {isSuccess && (
-          <div className="flex flex-col items-center justify-center w-[50%] bg-green-400 text-black rounded-xl">
-            {resultText}
+          <div className="text-center mt-6">
+            <p className="text-fontColor">
+              Already have an account?{" "}
+              <Link to="/auth/login" className="text-accent hover:text-white font-bold transition-colors">
+                Login
+              </Link>
+            </p>
           </div>
-        )}
+        </form>
 
-        <div className="flex flex-row items-center justify-evenly w-full flex-shrink-0">
-          <button 
-            type="button"
-            onClick={() => navigate("/")}
-            className="w-48 h-12 rounded-full bg-accent text-fontColor border-2 border-primary transform transition duration-300 ease-in-out hover:border-accent hover:bg-secondary hover:shadow-lg hover:scale-105 text-xl font-bold text-center">
-            
-            Cancel
-          </button>
-
-          <button
-            type="submit"
-            className="w-48 h-12 rounded-full bg-accent text-fontColor border-2 border-primary transform transition duration-300 ease-in-out hover:border-accent hover:bg-secondary hover:shadow-lg hover:scale-105 text-xl font-bold text-center">
-
-            Create
-          </button>
+        <div className="bg-secondary bg-opacity-50 p-4 text-center border-t border-accent">
+          <p className="text-fontColor text-sm">
+            By creating an account, you agree to our{" "}
+            <Link to="/terms" className="text-accent hover:underline">Terms of Service</Link> and{" "}
+            <Link to="/privacy" className="text-accent hover:underline">Privacy Policy</Link>
+          </p>
         </div>
-      </form>
+      </div>
     </div>
   );
 };
